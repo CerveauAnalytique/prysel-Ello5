@@ -1,0 +1,15 @@
+install and chnage database npx neonctl@latest init
+postgresql://neondb_owner:npg_UGTvyBk1CF8g@ep-rapid-resonance-azg6rzd8-pooler.c-3.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+
+
+use https://ui.shadcn.com/ for the css 
+
+
+
+
+use this desgin for the website
+index.html desgin you can find here (/Users/marktplaats/Desktop/1ello5 
+) there is the desgin use ello.css for css plus use https://ui.shadcn.com/ for the css 
+ both aso the logo is there
+
+ make payload cms proof navbar footer headers, add all in the admin panel for chnage the content in the admin panel
