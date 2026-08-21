@@ -1,86 +1,69 @@
 {
   "header": [
     {
-      "caption": "FAQ",
-      "url": "/faq/",
-      "external": false
+      "caption": "Behest",
+      "url": "/behest",
+      "external": false,
+      "mobile": true,
+      "app": true
     },
     {
-      "caption": "Changelog",
-      "url": "/changelog/",
-      "external": false
+      "caption": "Models",
+      "url": "/models",
+      "external": false,
+      "mobile": true,
+      "app": true
+    },
+    {
+      "caption": "Docu",
+      "url": "/",
+      "external": false,
+      "mobile": false,
+      "docsHome": true
+    },
+    {
+      "caption": "Privacy",
+      "url": "/privacy",
+      "external": false,
+      "mobile": false,
+      "app": true
+    },
+    {
+      "caption": "GitHub",
+      "url": "https://github.com/EricksonAtHome/ElloFive",
+      "external": true,
+      "mobile": false
+    }
+  ],
+  "footer": [
+    {
+      "caption": "Behest",
+      "url": "/behest",
+      "external": false,
+      "app": true
+    },
+    {
+      "caption": "Models",
+      "url": "/models",
+      "external": false,
+      "app": true
+    },
+    {
+      "caption": "Docu",
+      "url": "/",
+      "external": false,
+      "docsHome": true
+    },
+    {
+      "caption": "Privacy",
+      "url": "/privacy",
+      "external": false,
+      "app": true
     },
     {
       "caption": "GitHub",
       "url": "https://github.com/EricksonAtHome/ElloFive",
       "external": true
-    }
-  ],
-  "footer": [
-    {
-      "title": "Getting Started",
-      "items": [
-        {
-          "caption": "Introduction",
-          "url": "/getting-started/introduction/",
-          "external": false
-        },
-        {
-          "caption": "Features",
-          "url": "/getting-started/features/",
-          "external": false
-        },
-        {
-          "caption": "Structure",
-          "url": "/getting-started/structure/",
-          "external": false
-        },
-        {
-          "caption": "Setup",
-          "url": "/getting-started/setup/",
-          "external": false
-        }
-      ]
-    },
-    {
-      "title": "ElloFive",
-      "items": [
-        {
-          "caption": "Repository",
-          "url": "https://github.com/EricksonAtHome/ElloFive",
-          "external": true
-        },
-        {
-          "caption": "Domains",
-          "url": "https://github.com/EricksonAtHome/ElloFive/blob/main/docs/domains.md",
-          "external": true
-        },
-        {
-          "caption": "Ubuntu Cloud Lab",
-          "url": "https://github.com/EricksonAtHome/ElloFive/blob/main/docs/ubuntu-cloud-lab.md",
-          "external": true
-        }
-      ]
-    },
-    {
-      "title": "Related",
-      "items": [
-        {
-          "caption": "ello5.com",
-          "url": "https://ello5.com",
-          "external": true
-        },
-        {
-          "caption": "Ollama",
-          "url": "https://ollama.com",
-          "external": true
-        },
-        {
-          "caption": "FRC7",
-          "url": "https://github.com/EricksonAtHome/FRC7",
-          "external": true
-        }
-      ]
     }
   ]
 }

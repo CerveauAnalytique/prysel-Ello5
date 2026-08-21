@@ -11,19 +11,21 @@
         <link rel="stylesheet" href="{{ '/css/main.css' | url }}" />
     </head>
     <body>
+        <a class="btn btn--primary skip-link" href="#content">Skip to content</a>
+        {% include "partials/header.html" %}
+
         <div class="site-wrapper">
-            <a class="btn btn--primary skip-link" href="#content">Skip to content</a>
             <div class="container container--wide">
-                {% include "partials/header.html" %}
                 <div class="l-main">
                     {% include "partials/sidebar.html" %}
                     <div class="l-main__body">
                         <main id="content">{% block content %}{% endblock %}</main>
-                        {% include "partials/footer.html" %}
                     </div>
                 </div>
             </div>
         </div>
+
+        {% include "partials/footer.html" %}
         {% include "partials/search-modal.html" %}
 
         <script src="{{ '/js/theme-change-assets.js' | url }}" defer></script>

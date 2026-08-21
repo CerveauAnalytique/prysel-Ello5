@@ -1,34 +1,43 @@
-<footer class="footer">
-    <div class="footer__inner">
-        {% for block in navigation.footer %}
-        <div class="footer__column">
-            <h3 class="footer__title" id="footer-title-{{ block.title | slugify }}">
-                {{ block.title }}
-            </h3>
-            <ul
-                class="footer__navigation"
-                aria-labelledby="footer-title-{{ block.title | slugify }}"
-            >
-                {% for item in block.items %}
-                <li>
+<footer class="site-chrome-footer">
+    <div class="site-chrome-footer__inner">
+        <div class="site-chrome-footer__top">
+            <div class="site-chrome-footer__brand">
+                <a href="{{ '/' | url }}" class="site-chrome-footer__logo-link" aria-label="Prysel">
+                    <img
+                        src="{{ '/img/prysel_logo.png' | url }}"
+                        alt="Prysel"
+                        class="site-chrome-footer__logo"
+                        width="100"
+                        height="24"
+                        decoding="async"
+                    />
+                </a>
+                <p class="site-chrome-footer__tagline">{{ site.slogen }}</p>
+                <p class="site-chrome-footer__company">{{ site.company }}</p>
+            </div>
+
+            <nav class="site-chrome-footer__nav" aria-label="Footer">
+                {% for item in navigation.footer %}
                     <a
-                        href="{% if item.external %}{{ item.url }}{% else %}{{ item.url | url }}{% endif %}"
-                        {{ helpers.getLinkActiveState(item.url, page.url) | safe }}
-                        {% if item.external %}
-                            target="_blank"
-                            rel="noopener"
-                        {% endif %}
+                        href="{% if item.external %}{{ item.url }}{% elif item.docsHome %}{{ '/' | url }}{% elif item.app %}{{ site.appUrl }}{{ item.url }}{% else %}{{ item.url | url }}{% endif %}"
+                        class="site-chrome-footer__link"
+                        {% if item.external %}target="_blank" rel="noopener noreferrer"{% endif %}
                     >
                         {{ item.caption }}
-                        {% if item.external %}
-                            <span class="sr-only">Open in new window</span>
-                            {% svgIcon './src/img/icon/arrow-outward.svg', 'btn__icon' %}
-                        {% endif %}
                     </a>
-                </li>
                 {% endfor %}
-            </ul>
+            </nav>
         </div>
-        {% endfor %}
+
+        <div class="site-chrome-footer__bottom">
+            <span class="site-chrome-footer__copy">{{ site.copyright }}</span>
+            <div class="site-chrome-footer__meta">
+                <span class="site-chrome-footer__local-first">
+                    <span class="site-chrome-footer__dot" aria-hidden="true"></span>
+                    Local-first
+                </span>
+                {% include "partials/theme-switcher.html" %}
+            </div>
+        </div>
     </div>
 </footer>

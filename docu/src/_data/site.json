@@ -1,13 +1,15 @@
 {
   "authorEmail": "",
-  "authorName": "ElloFive",
-  "copyright": "ElloFive — Elite Coding System",
-  "name": "ElloFive Docs",
-  "slogen": "Documentation for ElloFive + Ello5 AI mode",
+  "authorName": "Prysel",
+  "copyright": "MIT licensed · github.com/EricksonAtHome/ElloFive",
+  "name": "Prysel Docs",
+  "slogen": "Ello5 coding system running privately on your local machine.",
+  "company": "Prysel INC",
   "social": {
     "twitter": "",
     "github": "https://github.com/EricksonAtHome/ElloFive",
     "discord": ""
   },
-  "url": "https://ericksonathome.github.io/ElloFive"
+  "url": "https://ericksonathome.github.io/ElloFive",
+  "appUrl": ""
 }

@@ -3,7 +3,7 @@
   const menu = document.querySelector('.l-main__sidebar');
   const mq = window.matchMedia('(max-width: 64em)');
 
-  if (!menu || typeof button === 'undefined') return;
+  if (!menu || !button) return;
 
   function widthChange(query) {
     button.setAttribute('aria-expanded', !query.matches);

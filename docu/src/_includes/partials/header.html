@@ -1,55 +1,49 @@
-<header class="header">
-    <div class="header__column">
-        <a class="header__logo" href="{{ '/' | url }}" aria-label="{{ site.name }}">
-            {% svgIcon './src/img/cone-docs-logo.svg' %}
+<header class="site-chrome-header">
+    <div class="site-chrome-header__inner">
+        <a class="site-chrome-header__brand" href="{{ '/' | url }}" aria-label="Prysel">
+            <img
+                src="{{ '/img/prysel_logo.png' | url }}"
+                alt="Prysel"
+                class="site-chrome-header__logo"
+                width="120"
+                height="28"
+                decoding="async"
+            />
         </a>
-        {% if navigation.header.length > 0 %}
-            <nav class="header__navigation">
-                <ul>
-                    {% for item in navigation.header %}
-                    <li>
-                        <a
-                            href="{% if item.external %}{{ item.url }}{% else %}{{ item.url | url }}{% endif %}"
-                            {{ helpers.getLinkActiveState(item.url, page.url) | safe }}
-                            {% if item.external %}
-                                target="_blank"
-                                rel="noopener"
-                            {% endif %}
-                        >
-                            {{ item.caption }}
-                            {% if item.external %}
-                                <span class="sr-only">Open in new window</span>
-                                {% svgIcon './src/img/icon/arrow-outward.svg', 'btn__icon' %}
-                            {% endif %}
-                        </a>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </nav>
-        {% endif %}
-        <button class="btn btn--primary btn--icon header__toggle" data-action="sidebar-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="Toogle navigation">
-            {% svgIcon './src/img/icon/menu.svg', 'btn__icon' %}
-        </button>
-    </div>
-    <div class="header__actions">
-        {% include "partials/search-toggle.html" %}
-        {% include "partials/theme-switcher.html" %}
-        <div class="header__socials">
-            {% if (site.social.github) %}
-                <a href="{{ site.social.github }}" aria-label="GitHub">
-                    {% svgIcon './src/img/icon/github.svg' %}
+
+        <nav class="site-chrome-header__nav" aria-label="Primary">
+            {% for item in navigation.header %}
+                <a
+                    href="{% if item.external %}{{ item.url }}{% elif item.docsHome %}{{ '/' | url }}{% elif item.app %}{{ site.appUrl }}{{ item.url }}{% else %}{{ item.url | url }}{% endif %}"
+                    class="site-chrome-header__link{% if not item.mobile %} site-chrome-header__link--desktop{% endif %}"
+                    {% if item.external %}target="_blank" rel="noopener noreferrer"{% endif %}
+                    {% if item.docsHome %}aria-current="page"{% endif %}
+                >
+                    {{ item.caption }}
                 </a>
-            {% endif %}
-            {% if (site.social.discord) %}
-                <a href="{{ site.social.discord }}" aria-label="Discrod">
-                    {% svgIcon './src/img/icon/discord.svg' %}
-                </a>
-            {% endif %}
-            {% if (site.social.twitter) %}
-                <a href="{{ site.social.twitter }}" aria-label="Twitter">
-                    {% svgIcon './src/img/icon/twitter.svg' %}
-                </a>
-            {% endif %}
-        </div>
+            {% endfor %}
+
+            <button
+                type="button"
+                class="site-chrome-header__search"
+                data-action="open-search"
+                aria-label="Open search"
+            >
+                {% svgIcon './src/img/icon/search.svg', 'site-chrome-header__search-icon' %}
+                <span class="site-chrome-header__search-label">Search…</span>
+                <kbd class="site-chrome-header__kbd">⌘K</kbd>
+            </button>
+
+            <button
+                type="button"
+                class="site-chrome-header__docs-toggle"
+                data-action="sidebar-toggle"
+                aria-controls="primary-menu"
+                aria-expanded="false"
+                aria-label="Toggle documentation menu"
+            >
+                {% svgIcon './src/img/icon/menu.svg', 'site-chrome-header__menu-icon' %}
+            </button>
+        </nav>
     </div>
 </header>

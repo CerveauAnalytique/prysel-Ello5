@@ -1,23 +1,23 @@
 (() => {
   let activeElement = null;
   const siteWrapper = document.querySelector('.site-wrapper');
-  const button = document.querySelector('[data-action="open-search"]');
+  const buttons = document.querySelectorAll('[data-action="open-search"]');
   const input = document.querySelector('.pagefind-ui__search-input');
   const modal = document.querySelector('.modal-backdrop');
 
-  if (!button || !modal) return;
+  if (!buttons.length || !modal) return;
 
   function openModal() {
     activeElement = document.activeElement;
-    siteWrapper.setAttribute('inert', '');
+    if (siteWrapper) siteWrapper.setAttribute('inert', '');
     modal.classList.add('modal-backdrop--open');
-    input.focus();
+    if (input) input.focus();
   }
 
   function closeModal() {
-    siteWrapper.removeAttribute('inert');
+    if (siteWrapper) siteWrapper.removeAttribute('inert');
     modal.classList.remove('modal-backdrop--open');
-    activeElement.focus();
+    if (activeElement) activeElement.focus();
   }
 
   function handleKeyDown(e) {
@@ -25,7 +25,7 @@
       closeModal();
     }
 
-    if (e.ctrlKey && e.code === 'KeyK') {
+    if ((e.ctrlKey || e.metaKey) && e.code === 'KeyK') {
       e.preventDefault();
       openModal();
     }
@@ -37,8 +37,10 @@
     }
   });
 
-  button.addEventListener('click', () => {
-    openModal();
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      openModal();
+    });
   });
 
   window.addEventListener('keydown', handleKeyDown);
