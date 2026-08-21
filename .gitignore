@@ -20,3 +20,8 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# Eleventy documentation site (/docu)
+docu/node_modules/
+docu/dist/
+docu/.cache/
