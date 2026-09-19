@@ -87,7 +87,9 @@ export default buildConfig({
   ),
   globals: [Header, Footer],
   plugins,
-  secret: process.env.PAYLOAD_SECRET,
+  secret:
+    process.env.PAYLOAD_SECRET ||
+    (process.env.NEXT_PHASE === 'phase-production-build' ? 'netlify-build-placeholder' : ''),
   sharp,
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
