@@ -10,6 +10,8 @@
   NEXT_TELEMETRY_DISABLED = "1"
   PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "1"
   NPM_CONFIG_LEGACY_PEER_DEPS = "true"
+  # Next.js 16 defaults to Turbopack, which fails on Netlify with Payload SCSS
+  # (`__turbopack_context__.a is not a function`). `pnpm build` passes --webpack.
 
 # Required in the Netlify UI (Site configuration → Environment variables):
 #   DATABASE_URL
