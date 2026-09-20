@@ -69,7 +69,7 @@ export const AdminHeaderBar: React.FC = () => {
       <span style={{ opacity: 0.3 }}>|</span>
 
       {/* CMS Wings */}
-      <div style={{ display: 'flex', itemsAlign: 'center', gap: '8px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
         <a
           href="/admin/collections/ai-models"
           style={{

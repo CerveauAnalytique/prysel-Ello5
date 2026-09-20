@@ -17,6 +17,7 @@ import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
+import { uniqueOrigins } from './utilities/getServerURL'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -72,10 +73,27 @@ export default buildConfig({
     defaultFromName: 'Ello5',
   }),
   collections: [Pages, Posts, Media, Categories, Users, AIModels, Tournaments],
-  cors: [getServerSideURL()].filter(Boolean),
+  cors: uniqueOrigins(
+    getServerSideURL(),
+    process.env.URL,
+    process.env.DEPLOY_PRIME_URL,
+    'https://ello5.com',
+    'https://www.ello5.com',
+    'https://ello5.netlify.app',
+  ),
+  csrf: uniqueOrigins(
+    getServerSideURL(),
+    process.env.URL,
+    process.env.DEPLOY_PRIME_URL,
+    'https://ello5.com',
+    'https://www.ello5.com',
+    'https://ello5.netlify.app',
+  ),
   globals: [Header, Footer],
   plugins,
-  secret: process.env.PAYLOAD_SECRET,
+  secret:
+    process.env.PAYLOAD_SECRET ||
+    (process.env.NEXT_PHASE === 'phase-production-build' ? 'netlify-build-placeholder' : ''),
   sharp,
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),

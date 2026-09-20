@@ -1,7 +1,10 @@
-const SITE_URL =
+const SITE_URL = (
   process.env.NEXT_PUBLIC_SERVER_URL ||
+  process.env.DEPLOY_PRIME_URL ||
+  process.env.URL ||
   process.env.VERCEL_PROJECT_PRODUCTION_URL ||
-  'https://example.com'
+  'https://ello5.com'
+).replace(/\/$/, '')
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
