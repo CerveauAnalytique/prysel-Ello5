@@ -11,7 +11,7 @@ const getPostsSitemap = unstable_cache(
       process.env.DEPLOY_PRIME_URL ||
       process.env.URL ||
       process.env.VERCEL_PROJECT_PRODUCTION_URL ||
-      'https://ello5.netlify.app'
+      'https://ello5.com'
     ).replace(/\/$/, '')
 
     const results = await payload.find({

@@ -3,7 +3,7 @@ const SITE_URL = (
   process.env.DEPLOY_PRIME_URL ||
   process.env.URL ||
   process.env.VERCEL_PROJECT_PRODUCTION_URL ||
-  'https://ello5.netlify.app'
+  'https://ello5.com'
 ).replace(/\/$/, '')
 
 /** @type {import('next-sitemap').IConfig} */

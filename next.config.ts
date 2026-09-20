@@ -10,7 +10,12 @@ const dirname = path.dirname(__filename)
 
 const NEXT_PUBLIC_SERVER_URL = resolveServerURL()
 
-const imageOrigins = uniqueOrigins(NEXT_PUBLIC_SERVER_URL, 'https://ello5.netlify.app')
+const imageOrigins = uniqueOrigins(
+  NEXT_PUBLIC_SERVER_URL,
+  'https://ello5.com',
+  'https://www.ello5.com',
+  'https://ello5.netlify.app',
+)
 
 const nextConfig: NextConfig = {
   // Temporarily required on Windows until Next.js fixes Turbopack Sass resolution.

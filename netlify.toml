@@ -16,6 +16,6 @@
 # Required in the Netlify UI (Site configuration → Environment variables):
 #   DATABASE_URL
 #   PAYLOAD_SECRET
-#   NEXT_PUBLIC_SERVER_URL  (production: https://ello5.netlify.app)
+#   NEXT_PUBLIC_SERVER_URL  (production: https://ello5.com)
 #   CRON_SECRET
 #   PREVIEW_SECRET
