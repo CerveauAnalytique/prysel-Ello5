@@ -3,8 +3,13 @@ declare global {
     interface ProcessEnv {
       PAYLOAD_SECRET: string
       DATABASE_URL: string
-      NEXT_PUBLIC_SERVER_URL: string
-      VERCEL_PROJECT_PRODUCTION_URL: string
+      NEXT_PUBLIC_SERVER_URL?: string
+      VERCEL_PROJECT_PRODUCTION_URL?: string
+      URL?: string
+      DEPLOY_PRIME_URL?: string
+      DEPLOY_URL?: string
+      CRON_SECRET?: string
+      PREVIEW_SECRET?: string
     }
   }
 }

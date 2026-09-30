@@ -11,10 +11,10 @@ import PageClient from './page.client'
 export const dynamic = 'force-static'
 export const revalidate = 600
 
-export default async function Page() {
+async function getPublishedPosts() {
   const payload = await getPayload({ config: configPromise })
 
-  const posts = await payload.find({
+  return payload.find({
     collection: 'posts',
     depth: 1,
     limit: 12,
@@ -26,6 +26,21 @@ export default async function Page() {
       meta: true,
     },
   })
+}
+
+export default async function Page() {
+  let posts: Awaited<ReturnType<typeof getPublishedPosts>> | null = null
+
+  try {
+    posts = await getPublishedPosts()
+  } catch {
+    // CMS env vars may be unset during first Netlify builds
+  }
+
+  const docs = posts?.docs ?? []
+  const page = posts?.page ?? 1
+  const totalDocs = posts?.totalDocs ?? 0
+  const totalPages = posts?.totalPages ?? 0
 
   return (
     <div className="pt-24 pb-24">
@@ -37,20 +52,13 @@ export default async function Page() {
       </div>
 
       <div className="container mb-8">
-        <PageRange
-          collection="posts"
-          currentPage={posts.page}
-          limit={12}
-          totalDocs={posts.totalDocs}
-        />
+        <PageRange collection="posts" currentPage={page} limit={12} totalDocs={totalDocs} />
       </div>
 
-      <CollectionArchive posts={posts.docs} />
+      <CollectionArchive posts={docs} />
 
       <div className="container">
-        {posts.totalPages > 1 && posts.page && (
-          <Pagination page={posts.page} totalPages={posts.totalPages} />
-        )}
+        {totalPages > 1 && page && <Pagination page={page} totalPages={totalPages} />}
       </div>
     </div>
   )

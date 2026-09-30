@@ -1,0 +1,21 @@
+# Next.js Runtime (OpenNext) is applied automatically on Netlify.
+# Do not set `publish` to `.next` — the adapter provisions functions and assets.
+[build]
+  command = "pnpm build"
+
+[build.environment]
+  NODE_VERSION = "22"
+  PNPM_VERSION = "10"
+  NODE_OPTIONS = "--no-deprecation"
+  NEXT_TELEMETRY_DISABLED = "1"
+  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "1"
+  NPM_CONFIG_LEGACY_PEER_DEPS = "true"
+  # Next.js 16 defaults to Turbopack, which fails on Netlify with Payload SCSS
+  # (`__turbopack_context__.a is not a function`). `pnpm build` passes --webpack.
+
+# Required in the Netlify UI (Site configuration → Environment variables):
+#   DATABASE_URL
+#   PAYLOAD_SECRET
+#   NEXT_PUBLIC_SERVER_URL  (production: https://ello5.com)
+#   CRON_SECRET
+#   PREVIEW_SECRET
